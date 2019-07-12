@@ -1,0 +1,4 @@
+os
+django == "2.2.3"
+django_environ == "0.4.5"
+Psycopg2 == "2.7.6.1"
