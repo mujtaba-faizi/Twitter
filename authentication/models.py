@@ -1,6 +1,5 @@
 from django.db.models import Model, CharField
 from django.core.validators import RegexValidator
-from django.db.models import Model
 
 
 class User(Model):

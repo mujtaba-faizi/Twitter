@@ -17,6 +17,11 @@ class SignIn(generic.TemplateView):
     template_name = 'authentication/signin.html'
 
 
+class ShowUserHomepage(generic.DetailView):
+    model = User
+    template_name = 'authentication/user_home.html'
+
+
 def save(request):
     new_user = User()
     new_user.email = request.POST['email']
@@ -33,7 +38,7 @@ def authenticate(request):
     username = request.POST['username']
     password = request.POST['pass']
     user = get_object_or_404(User, username=username, password=password)
-    return HttpResponseRedirect(reverse('tweets:user_home', args=(user.id,)))
+    return HttpResponseRedirect(reverse('authentication:user_home', args=(user.id,)))
 
 
 

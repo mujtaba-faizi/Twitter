@@ -1,8 +1,8 @@
 {% block content %}
-  <h2>Sign up</h2>
+  <h1>Sign up</h1>
   <form action="{% url 'authentication:save' %}" method="post">
     {% csrf_token %}
-    <p>Enter username
+    <p>Username
         <input type="text" name="username">
     </p>
       <p>First Name
@@ -11,10 +11,10 @@
     <p>Last Name
         <input type="text" name="l_name">
     </p>
-    <p>Enter email
+    <p>Email Address
         <input type="text" name="email">
     </p>
-    <p>Enter password
+    <p>Password
         <input type="password" name="pass">
     </p>
     <p>Phone Number
