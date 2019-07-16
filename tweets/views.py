@@ -43,3 +43,15 @@ def add_follower(request, follower_user_id, followee_user_id):
         new_follower.followee_name = user.username
         new_follower.save()
     return HttpResponseRedirect(reverse('tweets:show_all_users', args=(follower_user_id,)))
+
+
+def like(request, user_id, tweet_id, page):
+    tweet = get_object_or_404(Tweet, pk=tweet_id)
+    tweet.likes += 1
+    tweet.save()
+    print(page)
+    if page == 'user_home':
+        return HttpResponseRedirect(reverse('authentication:user_home', args=(user_id,)))
+    elif page == 'profile':
+        print("kkoko")
+        return HttpResponseRedirect(reverse('tweets:user_profile', args=(user_id,)))

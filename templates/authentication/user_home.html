@@ -29,7 +29,7 @@
 {% for follower in user.follower_set.all %}
 {% for tweet in tweets %}
     {% if tweet.user_id is follower.followee_id %}
-        <li>{{ tweet.text }}
+        <li>{{ tweet.text }} &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a href="{% url 'tweets:like' user.id tweet.id 'user_home'%}">Like</a>
         </br>
             <i><strong>posted by {{ follower.followee_name }}</strong></i>
         </li>
