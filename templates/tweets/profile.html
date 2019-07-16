@@ -2,8 +2,6 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-
-
     <h3>First Name</h3>
     <p>{{ user.first_name }}</p>
 
@@ -15,3 +13,11 @@
 
     <h3>Phone Number</h3>
     <p>{{ user.phone }}</p>
+
+<h3><u>Following are all the tweets the user have posted:</u></h3>
+{% for tweet in user.tweet_set.all %}
+    <ul>
+        <li><strong>{{ tweet.text }}</strong></li>
+    </ul>
+{% endfor %}
+

@@ -2,4 +2,5 @@
 
 {% for user in users %}
     <h2><a href="{% url 'tweets:user_profile' user.id%}">{{ user.username }}</a></h2>
+    <strong><a href="{% url 'tweets:add_follower' logged_user_id user.id%}">follow</a></strong>
 {% endfor %}

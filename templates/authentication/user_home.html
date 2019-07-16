@@ -7,7 +7,7 @@
     <h2><a href="{% url 'authentication:home' %}">Sign-out?</a></h2>
     <h2><a href="{% url 'authentication:signin' %}">Update your profile?</a></h2>
     <h2><a href="{% url 'tweets:tweet_form'  user.id%}">Post a tweet?</a></h2>
-    <h2><a href="{% url 'tweets:show_all_users' %}">Search other users?</a></h2>
+    <h2><a href="{% url 'tweets:show_all_users' user.id %}">Search other users?</a></h2>
 
 {#<ul>#}
 {#{% for follower in question.choice_set.all %}#}
