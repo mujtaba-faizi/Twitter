@@ -2,6 +2,17 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
+    <h3>First Name</h3>
+    <p>{{ user.first_name }}</p>
+
+    <h3>Last Name</h3>
+    <p>{{ user.last_name }}</p>
+
+    <h3>Email</h3>
+    <p>{{ user.email }}</p>
+
+    <h3>Phone Number</h3>
+    <p>{{ user.phone }}</p>
 
 <ul>
     <h2><a href="{% url 'authentication:home' %}">Sign-out?</a></h2>
