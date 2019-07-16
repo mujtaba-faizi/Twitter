@@ -1,0 +1,11 @@
+<h1>Post a Tweet</h1>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'tweets:save_tweet' user.id %}" method="post">
+{% csrf_token %}
+<p>Tweet
+        <input type="text" name="tweet">
+    </p>
+<input type="submit" value="Post">
+</form>

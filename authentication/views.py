@@ -17,12 +17,16 @@ class SignIn(generic.TemplateView):
     template_name = 'authentication/signin.html'
 
 
+class SignOut(generic.TemplateView):
+    template_name = 'authentication/home.html'
+
+
 class ShowUserHomepage(generic.DetailView):
     model = User
     template_name = 'authentication/user_home.html'
 
 
-def save(request):
+def save_user(request):
     new_user = User()
     new_user.email = request.POST['email']
     new_user.password = request.POST['pass']
@@ -39,8 +43,6 @@ def authenticate(request):
     password = request.POST['pass']
     user = get_object_or_404(User, username=username, password=password)
     return HttpResponseRedirect(reverse('authentication:user_home', args=(user.id,)))
-
-
 
 
 

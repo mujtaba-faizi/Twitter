@@ -2,11 +2,11 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form method="post">
-{% csrf_token %}
-{% for choice in question.choice_set.all %}
-    <input type="text" name="username"  value="{{ choice.id }}">
-    <label for="choice{{ forloop.counter }}">{{ choice.text }}</label><br>
-{% endfor %}
-<input type="submit" value="Vote">
-</form>
+
+<ul>
+    <h2><a href="{% url 'authentication:home' %}">Sign-out?</a></h2>
+    <h2><a href="{% url 'authentication:signin' %}">Update your profile?</a></h2>
+    <h2><a href="{% url 'authentication:'  user.id%}">Post a tweet?</a></h2>
+    <h2><a href="{% url 'authentication:signin' %}">Search other users?</a></h2>
+</ul>
+
