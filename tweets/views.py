@@ -10,6 +10,11 @@ class InputTweet(generic.DetailView):
     template_name = 'tweets/tweet.html'
 
 
+class ShowProfile(generic.DetailView):
+    model = User
+    template_name = 'tweets/profile.html'
+
+
 def save_tweet(request, user_id):
     new_tweet = Tweet()
     new_tweet.user_id = user_id
