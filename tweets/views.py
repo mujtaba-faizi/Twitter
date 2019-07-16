@@ -16,3 +16,11 @@ def save_tweet(request, user_id):
     new_tweet.text = request.POST['tweet']
     new_tweet.save()
     return HttpResponseRedirect(reverse('authentication:user_home', args=(user_id,)))
+
+
+def show_users(request):
+    users = User.objects.all()
+    context = {
+        'users': users,
+    }
+    return render(request, 'tweets/users.html', context)
