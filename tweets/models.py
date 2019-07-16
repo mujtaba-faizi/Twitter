@@ -23,7 +23,7 @@ class Comment(Model):
 
 class Follower(Model):
     user = ForeignKey(User, on_delete=CASCADE)
-    follower_id = IntegerField(default=0)
+    followee_id = IntegerField(default=0)
 
     def __int__(self):
-        return self.follower_id
+        return self.followee_id

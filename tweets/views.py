@@ -34,10 +34,10 @@ def show_users(request, logged_user_id):
 
 def add_follower(request, logged_user_id, user_id):
     try:
-        Follower.objects.get(user_id=user_id, follower_id=logged_user_id)
+        Follower.objects.get(followee_id=user_id, user_id=logged_user_id)
     except (KeyError, Follower.DoesNotExist):       # If the user is not already followed
         new_follower = Follower()
-        new_follower.user_id = user_id
-        new_follower.follower_id = logged_user_id
+        new_follower.user_id = logged_user_id
+        new_follower.followee_id = user_id
         new_follower.save()
     return HttpResponseRedirect(reverse('tweets:show_all_users', args=(logged_user_id,)))

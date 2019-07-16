@@ -8,12 +8,19 @@
     <h2><a href="{% url 'authentication:signin' %}">Update your profile?</a></h2>
     <h2><a href="{% url 'tweets:tweet_form'  user.id%}">Post a tweet?</a></h2>
     <h2><a href="{% url 'tweets:show_all_users' user.id %}">Search other users?</a></h2>
+</ul>
 
-{#<ul>#}
-{#{% for follower in question.choice_set.all %}#}
-{#    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>#}
-{#{% endfor %}#}
-{#</ul>#}
+<h2>Tweets by the users you followed:</h2>
 
+<ul>
+
+<ul>
+{% for follower in user.follower_set.all %}
+{% for tweet in tweets %}
+    {% if tweet.user_id is follower.followee_id %}
+        <li>{{ tweet.text }} </li>
+    {% endif%}
+{% endfor %}
+{% endfor %}
 </ul>
 

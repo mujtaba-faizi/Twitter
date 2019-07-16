@@ -1,8 +1,9 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 from .models import User
+from tweets.models import Tweet
 
 
 class HomeView(generic.TemplateView):
@@ -21,9 +22,13 @@ class SignOut(generic.TemplateView):
     template_name = 'authentication/home.html'
 
 
-class ShowUserHomepage(generic.DetailView):
-    model = User
-    template_name = 'authentication/user_home.html'
+def show_homepage(request, user_id):
+    try:
+        user = User.objects.get(pk=user_id)
+        tweets = Tweet.objects.all()
+    except User.DoesNotExist:
+        raise Http404("User does not exist")
+    return render(request, 'authentication/user_home.html', {'user': user, 'tweets': tweets})
 
 
 def save_user(request):

@@ -1,7 +1,7 @@
 <h1>Users</h1>
 
 {% for user in users %}
-    {% if not user.id == logged_user_id %}     <!-- Avoid showing already logged in user as well -->
+    {% if user.id is not logged_user_id %}     <!-- Avoid showing already logged in user as well -->
     <h2><a href="{% url 'tweets:user_profile' user.id%}">{{ user.username }}</a></h2>
     <strong><a href="{% url 'tweets:add_follower' logged_user_id user.id%}">follow</a></strong>
     {% endif %}
