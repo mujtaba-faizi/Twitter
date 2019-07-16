@@ -22,6 +22,11 @@ class SignOut(generic.TemplateView):
     template_name = 'authentication/home.html'
 
 
+class Update(generic.DetailView):
+    model = User
+    template_name = 'authentication/update_form.html'
+
+
 def show_homepage(request, user_id):
     try:
         user = User.objects.get(pk=user_id)
@@ -49,5 +54,18 @@ def authenticate(request):
     user = get_object_or_404(User, username=username, password=password)
     return HttpResponseRedirect(reverse('authentication:user_home', args=(user.id,)))
 
+
+def update_profile(request, user_id):
+    try:
+        email = request.POST['email']
+        password = request.POST['pass']
+        first_name = request.POST['f_name']
+        last_name = request.POST['l_name']
+        phone = request.POST['no']
+        user = User.objects.filter(id=user_id).update(email=email, password=password, first_name=first_name,
+                                                      last_name=last_name, phone=phone)
+    except User.DoesNotExist:
+        raise Http404("User does not exist")
+    return HttpResponseRedirect(reverse('authentication:user_home', args=(user_id,)))
 
 
