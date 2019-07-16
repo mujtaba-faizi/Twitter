@@ -23,21 +23,23 @@ def save_tweet(request, user_id):
     return HttpResponseRedirect(reverse('authentication:user_home', args=(user_id,)))
 
 
-def show_users(request, logged_user_id):
+def show_users(request, follower_user_id):
     users = User.objects.all()
     context = {
         'users': users,
-        'logged_user_id': logged_user_id,
+        'follower_user_id': follower_user_id,
     }
     return render(request, 'tweets/users.html', context)
 
 
-def add_follower(request, logged_user_id, user_id):
+def add_follower(request, follower_user_id, followee_user_id):
     try:
-        Follower.objects.get(followee_id=user_id, user_id=logged_user_id)
+        Follower.objects.get(followee_id=followee_user_id, follower_id=follower_user_id)
     except (KeyError, Follower.DoesNotExist):       # If the user is not already followed
         new_follower = Follower()
-        new_follower.user_id = logged_user_id
-        new_follower.followee_id = user_id
+        new_follower.follower_id = follower_user_id
+        new_follower.followee_id = followee_user_id
+        user = User.objects.get(pk=followee_user_id)
+        new_follower.followee_name = user.username
         new_follower.save()
-    return HttpResponseRedirect(reverse('tweets:show_all_users', args=(logged_user_id,)))
+    return HttpResponseRedirect(reverse('tweets:show_all_users', args=(follower_user_id,)))
