@@ -17,7 +17,8 @@
 <h3><u>Following are all the tweets the user have posted:</u></h3>
 {% for tweet in user.tweet_set.all %}
     <ul>
-        <li><strong>{{ tweet.text }}&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a href="{% url 'tweets:like' user.id tweet.id 'profile'%}">Like</a></strong></li>
+        <li><strong>{{ tweet.text }}&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a href="{% url 'tweets:like' user.id tweet.id 'profile'%}">Like</a>
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a href="{% url 'tweets:comment_form' user.id tweet.id 'profile'%}">Comment</a></strong></li>
     </ul>
 {% endfor %}
 

@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
-from .models import Tweet, User, Follower
+from .models import Tweet, User, Follower, Comment
 
 
 class InputTweet(generic.DetailView):
@@ -49,9 +49,29 @@ def like(request, user_id, tweet_id, page):
     tweet = get_object_or_404(Tweet, pk=tweet_id)
     tweet.likes += 1
     tweet.save()
-    print(page)
     if page == 'user_home':
         return HttpResponseRedirect(reverse('authentication:user_home', args=(user_id,)))
     elif page == 'profile':
-        print("kkoko")
         return HttpResponseRedirect(reverse('tweets:user_profile', args=(user_id,)))
+
+
+def comment(request, user_id, tweet_id, page):
+    context = {
+        'user_id': user_id,
+        'tweet_id': tweet_id,
+        'page': page
+    }
+    return render(request, 'tweets/comment_form.html', context)
+
+
+def save_comment(request, user_id, tweet_id, page):
+    comment = Comment()
+    comment.text = request.POST['comment']
+    comment.tweet_id = tweet_id
+    comment.user_id = user_id
+    comment.save()
+    if page == 'user_home':
+        return HttpResponseRedirect(reverse('authentication:user_home', args=(user_id,)))
+    elif page == 'profile':
+        return HttpResponseRedirect(reverse('tweets:user_profile', args=(user_id,)))
+

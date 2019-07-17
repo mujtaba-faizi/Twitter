@@ -1,0 +1,9 @@
+{% block content %}
+  <form action="{% url 'tweets:comment' user_id tweet_id page %}" method="post">
+    {% csrf_token %}
+      <p>Add your comment
+        <input type="text" name="comment">
+    </p>
+        <input type="submit" value="Save">
+  </form>
+{% endblock %}

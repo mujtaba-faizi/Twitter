@@ -15,10 +15,11 @@ class Tweet(Model):
 
 class Comment(Model):
     tweet = ForeignKey(Tweet, on_delete=CASCADE)
+    user = ForeignKey(User, on_delete=CASCADE)
     text = CharField(max_length=200)
 
-    def __str__(self):
-        return self.text
+    def __int__(self):
+        return self.tweet_id
 
 
 class Follower(Model):
