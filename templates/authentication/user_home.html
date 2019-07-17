@@ -21,9 +21,22 @@
     <h2><a href="{% url 'tweets:show_all_users' user.id %}">Search other users?</a></h2>
 </ul>
 
-<h2>Tweets by the users you followed:</h2>
+<h2>Your Tweets:</h2>
 
 <ul>
+{% for tweet in tweets %}
+    {% if tweet.user_id is user.id %}
+        <li>{{ tweet.text }}
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a href="{% url 'tweets:comment_form' user.id user.id tweet.id 'user_home'%}">Comment</a>
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a href="{% url 'tweets:show_comments' user.id tweet.id %}">Show All Comments</a>
+        </br>
+        </li>
+        </br>
+    {% endif%}
+{% endfor %}
+</ul>
+
+<h2>Tweets by the users you followed:</h2>
 
 <ul>
 {% for follower in user.follower_set.all %}

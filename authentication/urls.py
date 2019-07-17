@@ -4,7 +4,7 @@ from authentication import views as views
 
 app_name = "authentication"
 urlpatterns = [
-    path('', views.HomeView.as_view(), name='home'),
+    path('home/', views.HomeView.as_view(), name='home'),
     path('signup/', views.SignUp.as_view(), name='signup'),
     path('signup/save/', views.save_user, name='save_user'),
     path('signup/authenticate/', views.authenticate, name='authenticate'),
