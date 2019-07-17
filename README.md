@@ -13,7 +13,7 @@
 
 ## Python 3.7 Requirements
 - Django==2.2.3
-- environ==1.0
+- django-environ==0.4.5
 - psycopg2==2.7.6.1
 - pytz==2019.1
 - sqlparse==0.3.0
