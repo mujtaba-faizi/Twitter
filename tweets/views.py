@@ -75,3 +75,14 @@ def save_comment(request, user_id, tweet_id, page):
     elif page == 'profile':
         return HttpResponseRedirect(reverse('tweets:user_profile', args=(user_id,)))
 
+
+def show_comments(request, user_id, tweet_id):
+    tweet = Tweet.objects.get(id=tweet_id)
+    context = {
+        'user_id': user_id,
+        'tweet': tweet,
+    }
+    return render(request, 'tweets/comments.html', context)
+
+
+

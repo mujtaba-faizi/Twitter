@@ -31,6 +31,7 @@
     {% if tweet.user_id is follower.followee_id %}
         <li>{{ tweet.text }} &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a href="{% url 'tweets:like' user.id tweet.id 'user_home'%}">Like</a>
             &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a href="{% url 'tweets:comment_form' user.id tweet.id 'user_home'%}">Comment</a>
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp <a href="{% url 'tweets:show_comments' user.id tweet.id %}">Show All Comments</a>
         </br>
             <i><strong>posted by {{ follower.followee_name }}</strong></i>
         </li>

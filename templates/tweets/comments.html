@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<h1>{{ tweet.text }}</h1>
 
-</body>
-</html>
+<ul>
+{% for comment in tweet.comment_set.all %}
+    <li>{{ comment.text }} </br>
+        <i><strong>posted by {{ comment.user.username }}</strong></i>
+        </br></br>
+    </li>
+{% endfor %}
+</ul>
