@@ -12,7 +12,10 @@
 9. User can comment on tweets.
 
 ## Python 3.7 Requirements
-- Django == 2.2.3
-- Psycopg2 == 2.7.6.1
+- Django==2.2.3
+- environ==1.0
+- psycopg2==2.7.6.1
+- pytz==2019.1
+- sqlparse==0.3.0
 
 
