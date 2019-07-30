@@ -1,0 +1,12 @@
+<h1>{{ likes.count }}</h1>
+
+
+    <h3>liked by</h3>
+<ul>
+{% for like in likes %}
+    <li>
+        <i>{{ like.user.username }}</i>
+        </br></br>
+    </li>
+{% endfor %}
+</ul>

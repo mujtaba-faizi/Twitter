@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
                 ('likes', models.IntegerField(default=0)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='authentication.User')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.User')),
             ],
         ),
         migrations.CreateModel(
@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=200)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='authentication.User')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.User')),
             ],
         ),
         migrations.CreateModel(
@@ -46,7 +46,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('text', models.CharField(max_length=200)),
-                ('tweet', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='authentication.Tweet')),
+                ('tweet', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.Tweet')),
             ],
         ),
     ]

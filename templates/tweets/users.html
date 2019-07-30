@@ -3,6 +3,6 @@
 {% for user in users %}
     {% if user.id is not follower_user_id %}     <!-- Avoid showing already logged in user as well -->
     <h2><a href="{% url 'tweets:user_profile' follower_user_id user.id%}">{{ user.username }}</a></h2>
-    <strong><a href="{% url 'tweets:add_follower' follower_user_id user.id%}">follow</a></strong>
+    <strong><a href="{% url 'users:add_follower' follower_user_id user.id%}">follow</a></strong>
     {% endif %}
 {% endfor %}

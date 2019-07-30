@@ -7,7 +7,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('tweets', '0003_auto_20190715_1211'),
-        ('authentication', '0008_auto_20190715_1222'),
+        ('users', '0008_auto_20190715_1222'),
     ]
 
     operations = [

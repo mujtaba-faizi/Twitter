@@ -1,6 +1,6 @@
 {% block content %}
   <h1>Sign up</h1>
-  <form action="{% url 'authentication:save_user' %}" method="post">
+  <form action="{% url 'users:save_user' %}" method="post">
     {% csrf_token %}
     <p>Username
         <input type="text" name="username">

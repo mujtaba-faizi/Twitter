@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('authentication', '0006_delete_user'),
+        ('users', '0006_delete_user'),
     ]
 
     operations = [

@@ -2,7 +2,7 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'authentication:authenticate' %}" method="post">
+<form action="{% url 'users:authenticate' %}" method="post">
 {% csrf_token %}
 <p>Username
         <input type="text" name="username">

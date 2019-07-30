@@ -14,11 +14,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='follower',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='authentication.User'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.User'),
         ),
         migrations.AlterField(
             model_name='tweet',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='authentication.User'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.User'),
         ),
     ]

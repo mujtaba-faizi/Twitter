@@ -1,6 +1,6 @@
 {% block content %}
   <h1>Update Your Profile</h1>
-  <form action="{% url 'authentication:update' user.id %}" method="post">
+  <form action="{% url 'users:update' user.id %}" method="post">
     {% csrf_token %}
       <p>First Name
         <input type="text" name="f_name" value={{ user.first_name }}>
